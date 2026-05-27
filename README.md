@@ -1,47 +1,54 @@
 # Análisis Financiero Automatizado
 
-Proyecto desarrollado en Python para realizar análisis financiero automatizado sobre distintos activos.
+## Descripción del proyecto
 
-## Funcionalidades
+Este proyecto consiste en el desarrollo de una pequeña librería de análisis financiero automatizado utilizando Python. El objetivo principal es analizar el comportamiento de distintos activos financieros mediante la descarga de datos históricos, cálculo de retornos, análisis estadístico y visualización gráfica.
 
-- Descarga de precios históricos desde Yahoo Finance.
-- Cálculo de retornos diarios.
-- Cálculo de estadísticos descriptivos.
-- Visualización de retornos mediante gráficos.
+El proyecto fue desarrollado utilizando datos obtenidos desde Yahoo Finance para los activos AAPL, JPM y TSLA.
 
-## Activos analizados
+---
 
-- AAPL
-- JPM
-- TSLA
+# Objetivos
 
-## Periodo analizado
+- Descargar precios históricos de activos financieros.
+- Calcular retornos diarios de los activos.
+- Obtener estadísticas descriptivas de los retornos.
+- Visualizar el comportamiento de los retornos mediante gráficos.
+- Comparar niveles de riesgo entre distintos activos financieros.
 
-Desde el 2021-01-01 hasta el 2024-01-01.
+---
 
-## Librerías utilizadas
+# Librerías utilizadas
 
 - yfinance
 - pandas
 - matplotlib
 
-## Cómo ejecutar el proyecto
+---
 
-Instalar las librerías:
+# Estructura del proyecto
 
-```bash
-pip install -r requirements.txt
+El proyecto se compone de las siguientes funciones:
 
-## Respuestas del análisis
+## 1. descargar_datos_yf()
 
-### ¿Cuál es el activo con mayor riesgo según volatilidad?
+Permite descargar precios históricos desde Yahoo Finance.
 
-El activo con mayor riesgo es TSLA, ya que presenta la mayor volatilidad entre los activos analizados.
+### Parámetros
 
-### ¿Algún activo presenta distribución de retornos no simétrica o con colas pesadas?
+- tickers: lista de activos financieros.
+- start: fecha de inicio.
+- end: fecha de término.
 
-Sí, TSLA presenta una distribución con mayor kurtosis y señales de colas pesadas, lo que indica mayor presencia de movimientos extremos.
+### Retorna
 
-### ¿Qué diferencias observas entre TSLA y JPM respecto a riesgo?
+Un DataFrame con precios de cierre.
 
-TSLA presenta un nivel de riesgo más alto que JPM, ya que sus retornos son más volátiles y muestran variaciones más extremas. JPM, en cambio, presenta un comportamiento más estable.
+---
+
+## 2. calcula_retornos()
+
+Calcula los retornos porcentuales diarios utilizando:
+
+```python
+df.pct_change().dropna()
